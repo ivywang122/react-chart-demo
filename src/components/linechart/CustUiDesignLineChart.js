@@ -133,7 +133,7 @@ export default class CustUiDesignLineChart extends PureComponent {
           strokeWidth={2} 
           strokeOpacity={opacity.lime}
           strokeDasharray={activeLine === 'Lime' || activeLine === 'All'? null : '5 5'} 
-          dot={<CustomizedDot />} 
+          dot={<CustomizedDot activeLine={activeLine}/>} 
         />
       </LineChart>
     );
@@ -155,7 +155,8 @@ export default class CustUiDesignLineChart extends PureComponent {
 }
 
 const Circle = props => {
-  return <circle fill={props.stroke} cx={props.cx} cy={props.cy} r={props.r} />
+  console.log(props.activeLine)
+  return <circle fill={props.stroke} cx={props.cx} cy={props.cy} r={props.r} opacity={props.opacity} />
 }
 
 const Text = props => {
@@ -163,13 +164,15 @@ const Text = props => {
 }
 
 const CustomizedDot = props => {
-  const { cx, cy, stroke } = props;
+  const { cx, cy, stroke, activeLine } = props;
+  // console.log(props.activeLine)
   return (
     <svg x={cx - 8} y={cy - 8} width={16} height={16} viewBox="0 0 16 16" >
-      <Circle stroke={stroke} cx={8} cy={8} r={8} />
+      <Circle stroke={stroke} cx={8} cy={8} r={8} activeLine={activeLine} />
       <Circle stroke={`#02152F`} cx={8} cy={8} r={4} />
     </svg>
   );
+  
 }
 
 

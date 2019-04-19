@@ -31,6 +31,9 @@ class Header extends Component {
 }
 
 const HeaderContainer = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   background-color: ${props => props.theme.colors.gray900};
