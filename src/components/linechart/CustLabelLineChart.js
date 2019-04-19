@@ -60,7 +60,7 @@ export default class RechartSimpleDemo2 extends PureComponent {
         data={data}
         margin={{ right: 15, left: 0 }}
       >
-        <CartesianGrid strokeDasharray="8 8" />
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis 
           dataKey="name" 
           height={60}

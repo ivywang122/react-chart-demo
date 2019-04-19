@@ -19,11 +19,11 @@ class Header extends Component {
   render() {
     return(
       <HeaderContainer>
-        <NavLink exact to="/" activeClassName="active">Doughnut Chart</NavLink>
-        <NavLink to="/PieChart">Pie Chart</NavLink>
-        <NavLink to="/LineChart">Line Chart</NavLink>
+        <NavLink exact to="/" activeClassName="active">Line Chart</NavLink>
         <NavLink to="/BarChart">Bar Chart</NavLink>
         <NavLink to="/AreaChart">Area Chart</NavLink>
+        <NavLink to="/PieChart">Pie Chart</NavLink>
+        <NavLink to="/DoughnutChart">Doughnut Chart</NavLink>
         <NavLink to="/Liquid">Liquid Gauge</NavLink>
       </HeaderContainer>
     );

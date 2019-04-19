@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import SimpleLineChart from './linechart/SimpleLineChart'
 import CustLabelLineChart from './linechart/CustLabelLineChart'
 import CustUiDesignLineChart from './linechart/CustUiDesignLineChart'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 class LineChartContainer extends PureComponent {
   constructor(props) {
@@ -36,7 +36,7 @@ class LineChartContainer extends PureComponent {
             </Row>
           </Container>
         </Block>
-        <Block color={'#021631'}>
+        <Block center color={'#021631'}>
           <Container>
             <Title center>Customized UI Design Line Chart</Title>
             <CustUiDesignLineChart />
@@ -53,6 +53,15 @@ const Block = styled.div`
   h2{
     color: ${props => props.color?  props.theme.colors.gray200 : null};
   }
+  ${props => {
+    if(props.center) {
+      return css`
+        .recharts-wrapper{
+          margin: auto;
+        }
+      `
+    }
+  }}
 `;
 
 const Title = styled.h2`

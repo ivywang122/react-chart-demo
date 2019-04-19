@@ -17,7 +17,7 @@ class App extends Component {
             <div>
               <Header />
               <Switch>
-                <Route exact path="/" component={DoughnutContainer} />
+                <Route exact path="/" component={LineChartContainer} />
                 <Route path="/LineChart" component={LineChartContainer} />
                 <Route path="/Liquid" component={DoughnutContainer} />
               </Switch>
