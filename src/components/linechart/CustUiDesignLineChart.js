@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import Circle from '\\svgElements/Circle'
+import Text from '\\svgElements/Text'
 import styled from 'styled-components'
 
 const data = [
@@ -34,8 +36,8 @@ class CustLegend extends PureComponent {
         onClick={() => this.props.onClick('All')}
       >
         <svg width={16} height={16} viewBox="0 0 16 16">
-          <Circle stroke={`white`} cx={8} cy={8} r={8} />
-          <Circle stroke={`#02152F`} cx={8} cy={8} r={4} />
+          <Circle fill={`white`} cx={8} cy={8} r={8} />
+          <Circle fill={`#02152F`} cx={8} cy={8} r={4} />
         </svg>
         <span>All</span>
       </LengendItem>
@@ -46,8 +48,8 @@ class CustLegend extends PureComponent {
           onClick={() => this.props.onClick(entry.value)}
         >
           <svg width={16} height={16} viewBox="0 0 16 16">
-            <Circle stroke={entry.color} cx={8} cy={8} r={8} />
-            <Circle stroke={`#02152F`} cx={8} cy={8} r={4} />
+            <Circle fill={entry.color} cx={8} cy={8} r={8} />
+            <Circle fill={`#02152F`} cx={8} cy={8} r={4} />
           </svg>
           <span>{entry.value}</span>
         </LengendItem>
@@ -74,6 +76,7 @@ export default class CustUiDesignLineChart extends PureComponent {
   }
   render() {
     const { activeLine, opacity } = this.state;
+
     return (
       <LineChart 
         width={900} 
@@ -104,6 +107,7 @@ export default class CustUiDesignLineChart extends PureComponent {
           iconType={`rect`}
           content={<CustLegend activeLine={activeLine} onClick={this.onLineChange} />} 
         />
+      
         <Line 
           type="monotone" 
           dataKey="blue" 
@@ -112,8 +116,10 @@ export default class CustUiDesignLineChart extends PureComponent {
           strokeWidth={2} 
           strokeOpacity={opacity.blue}
           strokeDasharray={activeLine === 'Blue' || activeLine === 'All'? null : '5 5'} 
-          dot={<CustomizedDot />} 
+          dot={<CustomizedDot active={activeLine === 'Blue' || activeLine === 'All'} />} 
+          activeDot={<CustomizedActiveDot active={activeLine === 'Blue'} />}
         />
+        
         <Line 
           type="monotone" 
           dataKey="red" 
@@ -122,9 +128,10 @@ export default class CustUiDesignLineChart extends PureComponent {
           strokeWidth={2} 
           strokeOpacity={opacity.red} 
           strokeDasharray={activeLine === 'Red' || activeLine === 'All'? null : '5 5'} 
-          dot={<CustomizedDot />} 
-          activeDot={<CustomizedActiveDot />} 
+          dot={<CustomizedDot active={activeLine === 'Red' || activeLine === 'All'} />} 
+          activeDot={<CustomizedActiveDot active={activeLine === 'Red'} />} 
         />
+
         <Line 
           type="monotone" 
           dataKey="lime" 
@@ -133,13 +140,13 @@ export default class CustUiDesignLineChart extends PureComponent {
           strokeWidth={2} 
           strokeOpacity={opacity.lime}
           strokeDasharray={activeLine === 'Lime' || activeLine === 'All'? null : '5 5'} 
-          dot={<CustomizedDot activeLine={activeLine}/>} 
+          dot={<CustomizedDot active={activeLine === 'Lime'|| activeLine === 'All'}/>} 
+          activeDot={<CustomizedActiveDot active={activeLine === 'Lime'} />}
         />
+
       </LineChart>
     );
   }
-
-
   _onLineChange(line) {
     let { opacity } = this.props;
     if(line === 'Red')
@@ -154,22 +161,14 @@ export default class CustUiDesignLineChart extends PureComponent {
   }
 }
 
-const Circle = props => {
-  console.log(props.activeLine)
-  return <circle fill={props.stroke} cx={props.cx} cy={props.cy} r={props.r} opacity={props.opacity} />
-}
-
-const Text = props => {
-  return <text transform="matrix(1 0 0 1 12.6514 37.5459)" fill="white" fontFamily={`微軟正黑體`} fontSize="24">{props.value}</text>
-}
 
 const CustomizedDot = props => {
-  const { cx, cy, stroke, activeLine } = props;
-  // console.log(props.activeLine)
+  const { cx, cy, stroke, active } = props;
+  
   return (
     <svg x={cx - 8} y={cy - 8} width={16} height={16} viewBox="0 0 16 16" >
-      <Circle stroke={stroke} cx={8} cy={8} r={8} activeLine={activeLine} />
-      <Circle stroke={`#02152F`} cx={8} cy={8} r={4} />
+      <Circle fill={stroke} cx={8} cy={8} r={8} opacity={active? 1 : 0.5} />
+      <Circle fill={`#02152F`} cx={8} cy={8} r={4} />
     </svg>
   );
   
@@ -177,16 +176,28 @@ const CustomizedDot = props => {
 
 
 const CustomizedActiveDot = props => {
-  let { cx, cy, fill, value } = props;
-  value = value.toFixed(1);
-  if(cy < 60) cy += 90 
+  let { cx, cy, fill, value, active } = props;
 
-  return (
-    <svg x={cx - 30} y={cy - 75} width={60} height={60} viewBox="0 0 60 60" >
-      <Circle stroke={fill} cx={30} cy={30} r={30} />
-      <Text value={value} />
-    </svg>
-  );
+  if(!active) {
+    return <Circle fill={fill} cx={cx} cy={cy} r={4} stroke={`#fff`} strokeWidth={2} />
+  
+  }else {
+    value = value.toFixed(1);
+    if(cy < 60) cy += 90;
+    return (
+      <svg x={cx - 30} y={cy - 75} width={60} height={60} viewBox="0 0 60 60" >
+        <Circle fill={fill} cx={30} cy={30} r={30} />
+        <Text
+          transform={`matrix(1 0 0 1 12.6514 37.5459)`}
+          fill={`#fff`}
+          fontFamily={`微軟正黑體`}
+          fontSize={24}
+          value={value}
+        />
+      </svg>
+    );
+  }
+  
 }
 
 const LegendBlock = styled.div`
