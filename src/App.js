@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Header from './common/Header';
-import DoughnutContainer from './components/DoughnutContainer'
 import LineChartContainer from './components/LineChartContainer'
+import BarChartContainer from './components/BarChartContainer'
+import DoughnutContainer from './components/DoughnutContainer'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from 'styled-components';
 
@@ -18,7 +19,7 @@ class App extends Component {
               <Header />
               <Switch>
                 <Route exact path="/" component={LineChartContainer} />
-                <Route path="/LineChart" component={LineChartContainer} />
+                <Route path="/BarChart" component={BarChartContainer} />
                 <Route path="/Liquid" component={DoughnutContainer} />
               </Switch>
             </div>
