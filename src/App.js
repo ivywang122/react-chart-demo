@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <HashRouter basename="/react-chart-demo">
+        <HashRouter basename="/">
           <div>
             <Header />
             <Switch>

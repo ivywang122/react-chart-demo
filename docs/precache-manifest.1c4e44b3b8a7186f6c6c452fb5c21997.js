@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/react-chart-demo/static/js/runtime~main.cd58a9cd.js"
   },
   {
-    "revision": "a2d4c8da054ef6a2e3cc",
-    "url": "/react-chart-demo/static/js/main.a5c19a43.chunk.js"
+    "revision": "e93c00fe9bd2d927970e",
+    "url": "/react-chart-demo/static/js/main.a6112755.chunk.js"
   },
   {
     "revision": "f2b4ea77a8da804b39a1",
     "url": "/react-chart-demo/static/js/2.e9cb987a.chunk.js"
   },
   {
-    "revision": "a2d4c8da054ef6a2e3cc",
+    "revision": "e93c00fe9bd2d927970e",
     "url": "/react-chart-demo/static/css/main.a17256f3.chunk.css"
   },
   {
-    "revision": "70d163a56e96d2de1dad462dd52f3336",
+    "revision": "37083bdf818418fd90c0d77a0debdc59",
     "url": "/react-chart-demo/index.html"
   }
 ];
