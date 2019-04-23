@@ -34,9 +34,9 @@ class MyComponent extends Component {
             </Row>
           </Container>
         </Block>
-        <Block color="#233239">
+        <Block center color="#030227">
           <Container>
-            <Title center>Stacked Bar Chart</Title>
+            <Title center>Customized Gradient Stacked Bar Chart</Title>
             <StackedBarChart />
           </Container>
         </Block>

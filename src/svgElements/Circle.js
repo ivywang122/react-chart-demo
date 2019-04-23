@@ -13,9 +13,9 @@ export default class Circle extends PureComponent {
   }
 
   render() {
-    const { fill, cx, cy, r, stroke, strokeWidth, opacity } = this.props
+    const { fill, cx, cy, r, stroke, strokeWidth, opacity, ...rest } = this.props
     return(
-      <circle fill={fill} cx={cx} cy={cy} r={r} stroke={stroke} strokeWidth={strokeWidth} opacity={opacity} />
+      <circle fill={fill} cx={cx} cy={cy} r={r} stroke={stroke} strokeWidth={strokeWidth} opacity={opacity} {...rest} />
     );
   }
 }

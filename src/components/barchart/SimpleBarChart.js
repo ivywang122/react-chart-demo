@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 
 const data = [
@@ -69,7 +69,7 @@ class SimpleBarChart extends PureComponent {
           minTickGap={-60}
           tick={<CustomizedTick />} />
         <YAxis />
-        <Tooltip cursor={{ fill: 'blue', fillOpacity: 0.25 }} />
+        <Tooltip cursor={{ fill: 'blue', opacity: 0.25 }} />
         <Legend 
           align={`right`}
           verticalAlign="top"

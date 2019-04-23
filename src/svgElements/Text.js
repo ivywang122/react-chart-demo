@@ -13,9 +13,9 @@ export default class Text extends PureComponent {
   }
 
   render() {
-    const { transform, fill, fontFamily, fontSize, value } = this.props;
+    const { x, y, fill, fontSize, value, ...rest } = this.props;
     return(
-      <text transform={transform} fill={fill} fontFamily={fontFamily} fontSize={fontSize}>{value}</text>
+      <text x={x} y={y} fill={fill} fontSize={fontSize} {...rest}>{value}</text>
     );
   }
 }

@@ -32,6 +32,7 @@ class Header extends Component {
 
 const HeaderContainer = styled.div`
   position: fixed;
+  z-index: 1000;
   top: 0;
   width: 100%;
   display: flex;
