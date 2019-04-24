@@ -4,6 +4,8 @@ import { Block, Title } from '../styled/CommonStyled'
 import SimpleBarChart from './barchart/SimpleBarChart'
 import SimpleLineChartVertical from './barchart/SimpleLineChartVertical'
 import StackedBarChart from './barchart/StackedBarChart'
+import BrushBarChart from './barchart/BrushBarChart'
+import EchartZoomBarChart from './barchart/EchartZoomBarChart'
 class MyComponent extends Component {
   constructor(props) {
     super(props)
@@ -38,6 +40,18 @@ class MyComponent extends Component {
           <Container>
             <Title center>Customized Gradient Stacked Bar Chart</Title>
             <StackedBarChart />
+          </Container>
+        </Block>
+        <Block center>
+          <Container>
+            <Title center>Simple Brush Bar Chart</Title>
+            <BrushBarChart />
+          </Container>
+        </Block>
+        <Block center color="#030227">
+          <Container>
+            <Title center>Echart Zoom Bar Chart</Title>
+            <EchartZoomBarChart />
           </Container>
         </Block>
       </div>
