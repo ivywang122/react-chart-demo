@@ -1,4 +1,4 @@
-# Chart Demo
+# React + Rechart
 
 [LIVE DEMO](https://ivywang122.github.io/react-chart-demo/)
 
